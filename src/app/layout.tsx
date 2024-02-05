@@ -22,7 +22,7 @@ export default function RootLayout({
           <Header />
           {children}
 
-          <footer className="footer footer-center p-4 bg-base-300 text-base-content">
+          <footer className="footer footer-center p-4 bg-base-300 text-base-content mt-33">
             <p>Ecommercito chiquito todo panzón todo mini</p>
           </footer>
         </div>
