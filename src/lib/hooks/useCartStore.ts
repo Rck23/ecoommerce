@@ -3,6 +3,15 @@ import { persist } from "zustand/middleware";
 import { round2 } from "../utils";
 import { OrderItem } from "../Models/OrderModel";
 
+
+type Cart = {
+  items: OrderItem[];
+  itemsPrice: number;
+  taxPrice: number;
+  shippingPrice: number;
+  totalPrice: number;
+};
+
 const initialState: Cart = {
   items: [],
   itemsPrice: 0,
@@ -81,10 +90,3 @@ const calcPrice = (items: OrderItem[]) => {
   return { itemsPrice, shippingPrice, taxPrice, totalPrice };
 };
 
-type Cart = {
-  items: OrderItem[];
-  itemsPrice: number;
-  taxPrice: number;
-  shippingPrice: number;
-  totalPrice: number;
-};
