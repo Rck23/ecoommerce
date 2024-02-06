@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Nombre del Proyecto
 
-## Getting Started
+## Descripción General
 
-First, run the development server:
+Nombre del Proyecto es una plataforma de comercio electrónico construida con [Next.js](https://nextjs.org/), [Mongoose](https://mongoosejs.com/) y [Zustand](https://github.com/pmndrs/zustand) para la gestión del estado. Permite a los usuarios navegar por productos, añadirlos a un carrito y completar compras con un proceso de pago seguro.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Empezando
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Requisitos Previos
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Versión 20.10.0 de Node.js 
+- Versión 10.2.3 de npm
+- Instancia de MongoDB en ejecución (local, cloud)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Instalación
 
-## Learn More
+Clona el repositorio e instala las dependencias:
+````npm install````
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Configura las variables de entorno:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Edita `.env` con tus propios valores.
 
-## Deploy on Vercel
+MONGODB_URL = <cadena de conexión>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Inicia el servidor de desarrollo: 
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```` mongodb+srv://<user>:<password>@ecommercenextjs.pelqjbs.mongodb.net/?retryWrites=true&w=majority ```
+
+
+
+Abre tu navegador en `http://localhost:3000`.
+
+## Características
+
+- Autenticación y autorización de usuarios
+- Listado de productos con búsqueda y filtros
+- Funcionalidad de carrito de compras con añadir/eliminar ítems
+- Integración con un gateway de pagos seguro
+- Diseño responsive
+
+
+
+
+
