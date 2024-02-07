@@ -1,4 +1,11 @@
-import mongoose from 'mongoose'
+import mongoose from "mongoose"
+
+export type User = {
+  _id: string
+  name: string
+  email: string
+  isAdmin: boolean
+}
 
 const UserSchema = new mongoose.Schema(
   {
@@ -30,7 +37,7 @@ const UserSchema = new mongoose.Schema(
 
 // Intenta obtener el modelo 'User' si ya ha sido definido anteriormente.
 // Si no existe, crea un nuevo modelo con el nombre 'User' utilizando el esquema 'UserSchema'.
-const UserModel = mongoose.models.User || mongoose.model('User', UserSchema);
+const UserModel = mongoose.models?.User || mongoose.model('User', UserSchema)
 
 // Exporta el modelo 'UserModel' para que pueda ser utilizado en otras partes de la aplicación.
 export default UserModel;

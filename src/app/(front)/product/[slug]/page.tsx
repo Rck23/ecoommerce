@@ -3,6 +3,7 @@
 import AddToCart from '@/components/products/AddToCart';
 // Importa los datos de los productos desde un módulo de datos.
 import { data } from '@/lib/data';
+import { productServices } from '@/lib/services/productService';
 // Importa el componente 'Image' de Next.js para optimizar la carga de imágenes.
 import Image from 'next/image';
 // Importa el componente 'Link' de Next.js para la navegación entre páginas sin recargar la página.
@@ -11,11 +12,26 @@ import Link from 'next/link';
 import React from 'react';
 
 
-export default function ProductDetails({params, }: {params: {slug: string}} ) {
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string }
+}) {
+  const product = await productServices.getBySlug(params.slug)
+  if (!product) {
+    return { title: 'Product not found' }
+  }
+  return {
+    title: product.name,
+    description: product.description,
+  }
+}
+
+export default async function ProductDetails({params, }: {params: {slug: string}} ) {
 
 
   // Busca el producto en la lista de productos basándose en el slug proporcionado en los parámetros de la URL.
-  const product = data.products.find((x) => x.slug === params.slug);
+  const product = await productServices.getBySlug(params.slug)
 
   // Si el producto no se encuentra, muestra un mensaje de error.
   if (!product) {
