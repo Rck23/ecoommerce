@@ -44,11 +44,11 @@ const Form = () => {
   return (
     <div className="max-w-sm  mx-auto card bg-base-300 my-4">
       <div className="card-body">
-        <h1 className="card-title">Sign in</h1>
+        <h1 className="card-title">Inicio de sesión</h1>
         {params.get('error') && (
           <div className="alert text-error">
             {params.get('error') === 'CredentialsSignin'
-              ? 'Invalid email or password'
+              ? 'Credenciales incorrectas'
               : params.get('error')}
           </div>
         )}
@@ -58,16 +58,16 @@ const Form = () => {
         <form onSubmit={handleSubmit(formSubmit)}>
           <div className="my-2">
             <label className="label" htmlFor="email">
-              Email
+              Correo electrónico
             </label>
             <input
               type="text"
               id="email"
               {...register('email', {
-                required: 'Email is required',
+                required: 'El correo electrónico es requerido',
                 pattern: {
                   value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
-                  message: 'Email is invalid',
+                  message: 'Correo electrónico invalido',
                 },
               })}
               className="input input-bordered w-full max-w-sm"
@@ -78,13 +78,13 @@ const Form = () => {
           </div>
           <div className="my-2">
             <label className="label" htmlFor="password">
-              Password
+              Contraseña
             </label>
             <input
               type="password"
               id="password"
               {...register('password', {
-                required: 'Password is required',
+                required: 'La contraseña es requerida',
               })}
               className="input input-bordered w-full max-w-sm"
             />
@@ -101,14 +101,14 @@ const Form = () => {
               {isSubmitting && (
                 <span className="loading loading-spinner"></span>
               )}
-              Sign in
+              Iniciar sesión
             </button>
           </div>
         </form>
         <div>
-          Need an account?{' '}
+          Aún no tienes cuenta?{' '}
           <Link className="link" href={`/register?callbackUrl=${callbackUrl}`}>
-            Register
+            Registrate
           </Link>
         </div>
       </div>

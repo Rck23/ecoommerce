@@ -37,7 +37,7 @@ export default function ClientProviders({
         fetcher: async (resource, init) => {
           const res = await fetch(resource, init)
           if (!res.ok) {
-            throw new Error('An error occurred while fetching the data.')
+            throw new Error('A ocurrido un error mientras se obtenia la data.')
           }
           return res.json()
         },

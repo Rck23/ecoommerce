@@ -19,7 +19,7 @@ export async function generateMetadata({
 }) {
   const product = await productServices.getBySlug(params.slug)
   if (!product) {
-    return { title: 'Product not found' }
+    return { title: 'Producto no encontrado' }
   }
   return {
     title: product.name,
@@ -42,10 +42,13 @@ export default async function ProductDetails({params, }: {params: {slug: string}
   return (
     <>
       {/* Enlace para volver a la lista de productos */}
-      <div className='my-2'>
-        <Link href='/'>
-          Volver a los productos  
-        </Link>
+      <div className='my-2 '>
+   
+
+          <Link href='/' className='btn btn-ghost my-5'>
+            Volver a los productos  
+          </Link>
+
       </div>
 
       {/* Grilla para organizar la información del producto */}

@@ -19,7 +19,7 @@ export const POST = async (request: NextRequest) => {
   try {
     await newUser.save()
     return Response.json(
-      { message: 'User has been created' },
+      { message: 'Usuario creado con exito!' },
       {
         status: 201,
       }

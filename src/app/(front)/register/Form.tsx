@@ -54,31 +54,33 @@ const Form = () => {
       })
       if (res.ok) {
         return router.push(
-          `/signin?callbackUrl=${callbackUrl}&success=Account has been created`
+          `/signin?callbackUrl=${callbackUrl}&success=Cuenta creada exitosamente!`
         )
       } else {
         const data = await res.json()
         throw new Error(data.message)
       }
     } catch (err: any) {
-      toast.error(err.message || 'error')
+
+      const error = err.message && err.message.indexOf('E11000') === 0 ? 'Correo electrónico ya existe en una cuenta' : err.message
+      toast.error(error || 'error')
     }
   }
 
   return (
     <div className="max-w-sm  mx-auto card bg-base-300 my-4">
       <div className="card-body">
-        <h1 className="card-title">Register</h1>
+        <h1 className="card-title">Nueva cuenta</h1>
         <form onSubmit={handleSubmit(formSubmit)}>
           <div className="my-2">
             <label className="label" htmlFor="name">
-              Name
+              Nombre
             </label>
             <input
               type="text"
               id="name"
               {...register('name', {
-                required: 'Name is required',
+                required: 'El nombre es requerido',
               })}
               className="input input-bordered w-full max-w-sm"
             />
@@ -88,16 +90,16 @@ const Form = () => {
           </div>
           <div className="my-2">
             <label className="label" htmlFor="email">
-              Email
+              Correo electrónico
             </label>
             <input
               type="text"
               id="email"
               {...register('email', {
-                required: 'Email is required',
+                required: 'El correo electrónico es requerido',
                 pattern: {
                   value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
-                  message: 'Email is invalid',
+                  message: 'Correo electrónico invalido',
                 },
               })}
               className="input input-bordered w-full max-w-sm"
@@ -108,13 +110,13 @@ const Form = () => {
           </div>
           <div className="my-2">
             <label className="label" htmlFor="password">
-              Password
+              Contraseña
             </label>
             <input
               type="password"
               id="password"
               {...register('password', {
-                required: 'Password is required',
+                required: 'La contraseña es requerida',
               })}
               className="input input-bordered w-full max-w-sm"
             />
@@ -124,16 +126,16 @@ const Form = () => {
           </div>
           <div className="my-2">
             <label className="label" htmlFor="confirmPassword">
-              Confirm Password
+              Confirmar contraseña
             </label>
             <input
               type="password"
               id="confirmPassword"
               {...register('confirmPassword', {
-                required: 'Confirm Password is required',
+                required: 'La confirmación de contraseña es requerida',
                 validate: (value) => {
                   const { password } = getValues()
-                  return password === value || 'Passwords should match!'
+                  return password === value || 'La contraseña no coincide!'
                 },
               })}
               className="input input-bordered w-full max-w-sm"
@@ -153,7 +155,7 @@ const Form = () => {
               {isSubmitting && (
                 <span className="loading loading-spinner"></span>
               )}
-              Register
+              Crear cuenta
             </button>
           </div>
         </form>
@@ -161,11 +163,11 @@ const Form = () => {
         <div className="divider"> </div>
         <div>
           {' '}
-          Already have an account? <Link
+          Ya tienes cuenta? <Link
             className="link"
             href={`/signin?callbackUrl=${callbackUrl}`}
           >
-            Login
+            Inicia sesión
           </Link>
         </div>
       </div>
